@@ -37,9 +37,41 @@
             border-radius: 5px;
             text-decoration: none;
             transition: background-color 0.3s ease;
+            cursor: pointer;
         }
         .button:hover {
             background-color: #5C2F42;
+        }
+        /* Popup styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #000;
         }
     </style>
 </head>
@@ -50,8 +82,37 @@
             Klik op de knop hieronder om de applicatie te starten en snel en eenvoudig overdrachtsdocumenten te genereren met spraakherkenning.
         </p>
         <a href="pleyade overdracht generatorv3.html" class="button">Start de Applicatie</a>
+        <br><br>
+        <button class="button" onclick="document.getElementById('privacyModal').style.display='block'">Privacy Statement</button>
     </div>
+
+    <!-- Popup -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('privacyModal').style.display='none'">&times;</span>
+            <h2>Privacy en jouw Gegevens: Zo Werkt Het</h2>
+            <p>Onze webapplicatie is ontworpen met jouw privacy als belangrijkste uitgangspunt. We begrijpen hoe belangrijk het is dat medische gegevens veilig en vertrouwelijk blijven. Daarom hebben we een proces gebouwd dat voldoet aan de strenge regels van de Algemene Verordening Gegevensbescherming (AVG).</p>
+            <h3>Geen Opslag, Maximale Veiligheid</h3>
+            <p>Deze applicatie is een '100% frontend'-tool. Dit betekent dat jouw gegevens niet worden opgeslagen op onze servers of in een database.</p>
+            <p><strong>Directe Verwerking:</strong> Wanneer je de microfoon gebruikt om informatie in te spreken, wordt de audio direct vanuit jouw browser naar de beveiligde API van AssemblyAI gestuurd voor transcriptie.</p>
+            <p><strong>Transparante Partnerschap:</strong> AssemblyAI is een professionele partij die wij hebben geselecteerd op basis van hun sterke beveiligingsmaatregelen. We hebben een Data Processing Addendum (DPA) met hen, wat een juridisch bindende overeenkomst is die garandeert dat zij jouw gegevens veilig verwerken en direct na de transcriptie verwijderen.</p>
+            <p><strong>Geen Tussenopslag:</strong> De gegenereerde tekst wordt meteen naar jou teruggestuurd, zonder dat er een kopie op de weg ergens anders wordt bewaard. Zelfs de audiobestanden en ruwe transcripties worden direct na verwerking door AssemblyAI gewist.</p>
+            <h3>Minimale Gegevens, Maximale Controle</h3>
+            <p>We passen het beginsel van gegevensminimering toe.</p>
+            <p><strong>Relevante Informatie:</strong> De applicatie is specifiek ontworpen om alleen de noodzakelijke medische en behandelingsinformatie vast te leggen die relevant is voor de overdracht van de cliënt.</p>
+            <p><strong>Jij Beslist:</strong> Jij hebt de volledige controle over welke gegevens je inspreekt en over welke informatie je wilt doorgeven aan de volgende behandelaar.</p>
+            <p>Dankzij deze aanpak kun je met een gerust hart onze tool gebruiken, wetende dat jouw gegevens niet onnodig worden bewaard en altijd veilig blijven. Jouw privacy en de vertrouwelijkheid van de cliënt zijn onze hoogste prioriteit.</p>
+        </div>
+    </div>
+
+    <script>
+        // Sluit de popup wanneer je buiten de content klikt
+        window.onclick = function(event) {
+            const modal = document.getElementById('privacyModal');
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
-
 </html>
-
